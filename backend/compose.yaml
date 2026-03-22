@@ -13,6 +13,7 @@ services:
       context: .
     environment:
       NODE_ENV: development
-      PORT: ${PORT}
+      PORT: ${PORT} 
+      URI: ${URI}
     ports:
       - 8990:8990
