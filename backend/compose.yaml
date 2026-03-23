@@ -10,7 +10,7 @@
 services:
   propertyrentapi:
     build:
-      context: ..
+      context: .
       dockerfile: docker/Dockerfile
     environment:
       NODE_ENV: development
