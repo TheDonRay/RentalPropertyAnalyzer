@@ -2,13 +2,13 @@ import express from "express";
 const app = express();
 
 // import routes
-import clientPref from "./routes/clientpreference.route.js";
+import clientpropdata from "./routes/clientpropdata.route.js";
 
 //set up some middleware here as such
 app.use(express.json());
 
 //instantiate the route here as such
-app.use("/api/v1/", clientPref);
+app.use("/api/v1/", clientpropdata);
 
 // send a set up response as such
 app.get("/", (req, res) => {
