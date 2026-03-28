@@ -7,12 +7,12 @@ import  externalapifunction from "../services/externalapifunction.service.js";
 const clientpropdataController = async (req: Request, res: Response) => {
   // get user address data here as such
   try {
-    const address = req.body;
+    const address = { UserAddress: req.body.address };
     // research better way to validate addresses.
     if (!address) {
       throw new Error("Error not valid address");
     }
-    console.log("valid address");
+    console.log("valid address", address);
     // call the function here
     externalapifunction(address); 
     console.log('External API function called'); 
