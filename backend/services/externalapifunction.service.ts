@@ -44,4 +44,4 @@ const dataAnalysis = async (Address : clientAddress) => {
   // const propertydataRecieved = //call the external function passed with the address. 
 }
 
-export default externalapifunction;
+export default { externalapifunction, dataAnalysis };
