@@ -37,11 +37,11 @@ const externalapifunction = async (Address: clientAddress) => {
 };
 
 // initialize another function here to handle data to be organized. 
-const dataAnalysis = async (Address : clientAddress) => { 
-  //TODO: Implement the destructuring 
-  //BLOCKERS //TODO: -> HANDLE THE whitespace that serves as spaces to replace with percent sign on querying and test the endpoint to make sure those calls are correctly made , then continue with the actual analysis and send that analysis 
-  // to another route to call the OPENAI api to analyze the data prompt it smart. 
-  // const propertydataRecieved = //call the external function passed with the address. 
-}
+// const dataAnalysis = async (Address : clientAddress) => { 
+//   //TODO: Implement the destructuring 
+//   //BLOCKERS //TODO: -> HANDLE THE whitespace that serves as spaces to replace with percent sign on querying and test the endpoint to make sure those calls are correctly made , then continue with the actual analysis and send that analysis 
+//   // to another route to call the OPENAI api to analyze the data prompt it smart. 
+//   // const propertydataRecieved = //call the external function passed with the address. 
+// }
 
-export default { externalapifunction, dataAnalysis };
+export default externalapifunction ;
