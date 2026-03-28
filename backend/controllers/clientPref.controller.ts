@@ -14,7 +14,8 @@ const clientpropdataController = async (req: Request, res: Response) => {
     }
     console.log("valid address", address);
     // call the function here
-    externalapifunction(address); 
+    externalapifunction(address); // calls the external API function to get property data 
+    // now we need to take that raw data and organize it into data that can be put into a mongodb database. The thing im worried about is accessing the actual data.
     console.log('External API function called'); 
   } catch (error) {
     console.error("There was an error reading your address", error);
