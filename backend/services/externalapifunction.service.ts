@@ -14,24 +14,28 @@ const externalapifunction = async (Address: clientAddress) => {
     // encode the address here so we dont take any whitespace here from the given address recieved to us by the client side . 
     const encodedAddress = encodeURIComponent(Address.UserAddress); 
     // build the external url here as such
-    const buildingURL = new URLSearchParams({
-      address: encodedAddress,
-    }); 
 
-    const externalapiURL = `https://api.rentcast.io/v1/properties?address=${buildingURL}`; 
-    console.log('URL called was the following:', externalapiURL);  
-    //this fetch is going to be a get request to actually call the data 
-    const propertydatafetch = await fetch(externalapiURL); 
-  
-    console.log('Fetching property data was successful'); 
+    const externalapiURL = `https://api.rentcast.io/v1/properties?address=${encodedAddress}`; 
+    console.log(externalapiURL);   
+    
+    const getpropertyData = await fetch(externalapiURL, { 
+      method: 'GET', 
+      headers: { 
+        'X-Api-Key': process.env.PROPKEY as string, 
+      }
+    });  
 
-    const propertyData = await propertydatafetch.json();  
-
-    if (!propertyData){ 
-      throw new Error('No property data recieved for given address user entered'); 
+    if (!getpropertyData){ 
+      throw new Error('Error fetching property data'); 
     } 
-    console.log('Property data was found, retrieving now');  
-    return propertyData; // data that is fetched from the external API call 
+
+    const retrievedData = await getpropertyData.json(); 
+    
+    if (!retrievedData){ 
+      throw new Error('Unable to get property data'); 
+    } 
+    console.log('Property data recieved'); 
+    return retrievedData; 
 
   } catch (error) {
     console.error("Error calling external function", error);
