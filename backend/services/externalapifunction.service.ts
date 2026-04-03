@@ -43,8 +43,19 @@ const externalapifunction = async (Address: clientAddress) => {
   }
 }; 
 
-// set up external function to handle the data recieved so that we can filter out and send that data to an openAI request to be handled. 
+const organizedData = async (Address: clientAddress) => { 
+  //set up try and catch case here to call the data from the above function 
+  try {  
+    const getrawdata = await externalapifunction(Address);  
+    if (!getrawdata) { 
+      throw new Error('Error calling the external function to get property data'); 
+    }
+    console.log('raw data is'); 
+    return getrawdata; 
+  } catch (error) { 
+      throw new Error('Error calling external function'); 
+  }
+}
 
 
-
-export default externalapifunction ;
+export default organizedData ;
