@@ -1,10 +1,10 @@
 import { Request, Response } from 'express'; 
-import OpenAi from 'openai'; 
+// import OpenAi from 'openai'; 
 
 // add openai api key to the .env folder in the backend 
-const openai = new OpenAi({ 
-    apiKey: process.env.OPENAIKEY
-});  
+// const openai = new OpenAi({ 
+//     apiKey: process.env.OPENAIKEY
+// });  
 
 interface clientAddress { 
     Useraddress: string
