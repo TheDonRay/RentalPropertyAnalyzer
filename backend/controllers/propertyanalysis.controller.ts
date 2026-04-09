@@ -10,13 +10,13 @@ interface clientAddress {
   UserAddress: string;
 }
 
-const PropertyAnalysisController = async (
-  Address: clientAddress,
-  req: Request,
-  res: Response,
-) => {
+const PropertyAnalysisController = async (req: Request, res: Response) => {
   // set up try and catch case here as such
   try {
+    const Address: clientAddress = { UserAddress: req.query.UserAddress as string };
+    if (!Address.UserAddress) {
+      return res.status(400).send("UserAddress query parameter is required");
+    }
     // get the data here as such remember that organizedData expects a object to be passed through.
     const organizedDataFetched = await organizedData(Address);
     if (!organizedDataFetched) {
@@ -40,7 +40,9 @@ const PropertyAnalysisController = async (
     });
     if (!aiPropertyAnalysis) {
       return res.status(404).send("Error getting AI Analysis on property data");
-    }
+    }  
+    // insert property data into database here  
+
     return res
       .status(200)
       .send(
