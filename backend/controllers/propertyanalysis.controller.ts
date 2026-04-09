@@ -13,7 +13,9 @@ interface clientAddress {
 const PropertyAnalysisController = async (req: Request, res: Response) => {
   // set up try and catch case here as such
   try {
-    const Address: clientAddress = { UserAddress: req.query.UserAddress as string };
+    const Address: clientAddress = {
+      UserAddress: req.query.UserAddress as string,
+    };
     if (!Address.UserAddress) {
       return res.status(400).send("UserAddress query parameter is required");
     }
@@ -40,8 +42,8 @@ const PropertyAnalysisController = async (req: Request, res: Response) => {
     });
     if (!aiPropertyAnalysis) {
       return res.status(404).send("Error getting AI Analysis on property data");
-    }  
-    // insert property data into database here  
+    }
+    // insert property data into database here
 
     return res
       .status(200)
