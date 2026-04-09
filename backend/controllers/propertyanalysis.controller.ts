@@ -1,5 +1,7 @@
 import { Request, Response } from "express";
-import organizedData from "../services/externalapifunction.service.js";
+import organizedData from "../services/externalapifunction.service.js"; 
+import AnalysisModel from "../model/Propertydata.model.js"; 
+
 import OpenAi from "openai";
 
 const client = new OpenAi({
@@ -43,8 +45,8 @@ const PropertyAnalysisController = async (req: Request, res: Response) => {
     if (!aiPropertyAnalysis) {
       return res.status(404).send("Error getting AI Analysis on property data");
     }
-    // insert property data into database here
-
+    // insert property data into database here regarding users address as such 
+    const storePropertyData = await 
     return res
       .status(200)
       .send(
